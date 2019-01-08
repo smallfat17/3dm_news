@@ -3,7 +3,7 @@ from ganme_news.items import GanmeNewsItem
 class mySpider(scrapy.Spider):
     name = 'game_news'
 
-    start_urls = ['https://www.3dmgame.com/news_all_{}/'.format(page) for page in range(200)]
+    start_urls = ['https://www.3dmgame.com/news_all_{}/'.format(page) for page in range(5000)]
 
     def parse(self, response):
         ul = response.xpath("//ul[@class='list']")
@@ -16,5 +16,6 @@ class mySpider(scrapy.Spider):
             game['bt'] = news[0]
             game['url'] = news[1]
             game['time'] = news[2]
+
             yield game
 
